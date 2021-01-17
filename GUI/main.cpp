@@ -2,12 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-int main();
 void drawBg(sf::RenderWindow& window);
+void genCar();
+void genPathNum(int min, int max);
+
 
 int main() {
-	int x = 0;
-	float angle(0.f);
 
 	sf::RenderWindow window(sf::VideoMode(800, 800), "Simulation");
 	
@@ -18,36 +18,56 @@ int main() {
 	sf::Transform transform;
 
 	while (window.isOpen()) {
+
+		//Draw background
 		drawBg(window);
-		
 
-			//Draw background
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+			genCar();
+		}
 
-
-			sf::RectangleShape car(sf::Vector2f(30, 60));
-			car.setFillColor(sf::Color(60, 245, 255));
-			car.setPosition(425, 740 - x);
-
-			/*car.setOrigin(440, 770 - x);
-			car.rotate(angle);*/
-
-			transform.rotate(angle, sf::Vector2f(440, 770 - x));
-
-			window.draw(car, transform);
-			x++;
-			angle += 0.001;
-
-
-			window.display();
-			while (window.pollEvent(event)) {
-				if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-					window.close();
+		window.display();
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+				window.close();
 			}
 		}
 		
 	}
 	return 0;
 }
+
+
+
+void genCar() {
+
+	int posNum = 0;
+	int pathNum = 0;
+
+	posNum = rand() % 4 + 1;
+
+	if (posNum == 1) {
+		pathNum = genPathNum(1);
+	}
+	else if (posNum == 2) {
+		pathNum = genPathNum(4);
+	}
+	else if (posNum == 3) {
+		pathNum = genPathNum(7);
+	}
+	else {
+		pathNum = genPathNum(10);
+	}
+
+	
+
+}
+
+int genPathNum(int min) {
+	return rand() % 3 + min;
+}
+
+
 
 void drawBg(sf::RenderWindow& window) {
 	window.clear(sf::Color(50, 50, 50)); //Set street colour
