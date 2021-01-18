@@ -1,5 +1,5 @@
 # NonStop
-Algorithm calculates cars nearing an intersection, below are images of the gui and some of the planning process.
+Algorithm calculates cars nearing an intersection and prevents collisions without stoplights, below are images of the gui and some of the planning process.
 
 ![Intersection](https://user-images.githubusercontent.com/25191547/104875616-b1fff080-5923-11eb-92d8-36919d5bac4c.jpg)
 ![Path Cases](https://user-images.githubusercontent.com/25191547/104875634-c47a2a00-5923-11eb-9217-410dc6d8a676.jpg)
